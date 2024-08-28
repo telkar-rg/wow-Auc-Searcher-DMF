@@ -15,18 +15,31 @@ end
 
 -- Set our defaults
 default("darkmoonfairecards.deckprice", 5000*10000)
+
+default("darkmoonfairecards.cards.rogue", 1)
+default("darkmoonfairecards.cards.sword", 1)
+default("darkmoonfairecards.cards.mage", 1)
+default("darkmoonfairecards.cards.demon", 1)
+
+default("darkmoonfairecards.cards.vanilla", 1)
+default("darkmoonfairecards.cards.tbc", 1)
+default("darkmoonfairecards.cards.wotlk", 1)
+
 default("darkmoonfairecards.craft.rogue", 1)
 default("darkmoonfairecards.craft.sword", 1)
 default("darkmoonfairecards.craft.mage", 1)
 default("darkmoonfairecards.craft.demon", 1)
+
 default("darkmoonfairecards.craft.vanilla", 1)
 default("darkmoonfairecards.craft.tbc", 1)
 default("darkmoonfairecards.craft.wotlk", 1)
+
 default("darkmoonfairecards.overhead.primal", 20*10000)
 default("darkmoonfairecards.overhead.eternal", 30*10000)
 default("darkmoonfairecards.mats.primal", 1)
 default("darkmoonfairecards.mats.eternal", 1)
 
+do
 function private.createMap(x)
 
 	local out = {};
@@ -231,7 +244,7 @@ local wotlkPigments = private.createMap({
 local wotlkInks = private.createMap({
 	43127, -- Snowfall Ink
 0});
-
+end
 -- **************************************************
 
 function lib:MakeGuiConfig(gui)
@@ -240,32 +253,58 @@ function lib:MakeGuiConfig(gui)
 
 	-- Add the help
 	gui:AddSearcher( L["Searcher_Title"], L["Searcher_Desc"], 100)
+	local colPos = 0
 
-	gui:AddControl(id, "Header", 0, L["Header_Desc"])
+	gui:AddControl(id, "Header", colPos, L["Header_Title"])
+	gui:AddControl(id, "Label",  colPos, 0, nil, L["Header_Desc"])
 	gui:GetLast(id).clearance = 10;
 
-	local last = gui:GetLast(id)
+	local last_header = gui:GetLast(id)
 
-	gui:AddControl(id, "MoneyFramePinned",  0, 0, "darkmoonfairecards.deckprice", 1, 99999999, "Budget per Epic Deck / 350 rep");
-	gui:GetLast(id).clearance = 20;
-	gui:AddControl(id, "MoneyFramePinned",  0, 0, "darkmoonfairecards.overhead.primal", 1, 99999999, "Budget per Primal Life");
-	gui:AddControl(id, "MoneyFramePinned",  0, 0, "darkmoonfairecards.overhead.eternal", 1, 99999999, "Budget per Eternal Life");
-
-	gui:SetLast(id, last)
-
-	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.rogue"  , "Craft Rogues cards (85 Inscription)"      ); -- lvl 10
-	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.sword"  , "Craft Swords cards (125 Inscription)"     ); -- lvl 10
-	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.mage"   , "Craft Mages cards (175 Inscription)"      ); -- lvl 20
-	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.demon"  , "Craft Demons cards (225 Inscription)"     ); -- lvl 20
-	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.vanilla", "Craft Vanilla WoW cards (275 Inscription)"); -- lvl 35
-
-	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.tbc"    , "Craft TBC cards (325 Inscription)"        ); -- lvl 50
-	gui:AddControl(id, "Checkbox",          0.4, 2, "darkmoonfairecards.mats.primal"  , "Include Primal Lifes");
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.cards.wotlk", 	L["Checkbox.cards.wotlk"]);
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.craft.wotlk", 	L["Checkbox.craft.wotlk"]); -- lvl 65
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.mats.eternal", 	L["Checkbox.mats.eternal"]);
 	gui:GetLast(id).clearance = 5;
-
-	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.wotlk"  , "Craft WotLK cards (400 Inscription)"      ); -- lvl 65
-	gui:AddControl(id, "Checkbox",          0.4, 2, "darkmoonfairecards.mats.eternal" , "Include Eternal Lifes");
+	-- local last_wotlk = gui:GetLast(id)
+	
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.cards.tbc", 		L["Checkbox.cards.tbc"]);
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.craft.tbc", 		L["Checkbox.craft.tbc"]); -- lvl 50
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.mats.primal", 	L["Checkbox.mats.primal"]);
 	gui:GetLast(id).clearance = 5;
+	-- local last_tbc = gui:GetLast(id)
+	
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.cards.vanilla", 	L["Checkbox.cards.vanilla"]);
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.craft.vanilla", 	L["Checkbox.craft.vanilla"]); -- lvl 35
+	gui:GetLast(id).clearance = 10;
+	local last_vanilla = gui:GetLast(id)
+	
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.cards.demon", 	"Cards/Decks: Demons");
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.craft.demon", 	"Reagents: Demons cards (225 Inscr.)"); -- lvl 20
+	gui:GetLast(id).clearance = 5;
+	
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.cards.mage", 		"Cards/Decks: Mages");
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.craft.mage", 		"Reagents: Mages cards (175 Inscr.)"); -- lvl 20
+	gui:GetLast(id).clearance = 5;
+	
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.cards.sword", 	"Cards/Decks: Swords");
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.craft.sword", 	"Reagents: Swords cards (125 Inscr.)"); -- lvl 10
+	gui:GetLast(id).clearance = 5;
+	
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.cards.rogue", 	"Cards/Decks: Rogues");
+	gui:AddControl(id, "Checkbox",          colPos, 0, "darkmoonfairecards.craft.rogue", 	"Reagents: Rogues cards (85 Inscr.)"); -- lvl 10
+	gui:GetLast(id).clearance = 5;
+	
+	-- **************************************************
+	colPos = 0.45
+	gui:SetLast(id, last_header)
+
+	gui:AddControl(id, "MoneyFramePinned",  colPos, 0, "darkmoonfairecards.deckprice", 1, 99999999, L["Money.deckprice"]);
+	gui:AddControl(id, "MoneyFramePinned",  colPos, 0, "darkmoonfairecards.overhead.eternal", 1, 99999999, L["Money.mats.eternal"]);
+	gui:AddControl(id, "MoneyFramePinned",  colPos, 0, "darkmoonfairecards.overhead.primal", 1, 99999999, L["Money.mats.primal"]);
+	gui:GetLast(id).clearance = 5;
+									-- level, width, height, text
+	gui:AddControl(id, "Note",  colPos, 0, 280, 80, L["Note.deckprice"])
+	
 end
 
 function lib.Search(item)
