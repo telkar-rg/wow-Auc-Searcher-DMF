@@ -1,9 +1,8 @@
 ## Interface: 30300
-## Title: Auc:Searcher: Darkmoon Faire
-## Notes: Allows searching of Auctioneer data for Darkmoon Faire cards and ingredient items
-## Title-deDE: Auc:Searcher: Darkmoon Faire
-## Notes-deDE: Ermöglicht das Durchsuchen von Auctioneer-Daten nach Dunkelmond-Jahrmarkt Karten and deren Zutaten
-## Author: Cal Henderson (Bees on Hyjal-US)
+## Title: Auc:Searcher: Darkmoon (1.5)
+## Notes: Allows searching Auctioneer data for Darkmoon Faire cards and reagents for crafting them
+## Notes-deDE: Ermöglicht Durchsuchen von Auctioneer-Daten nach Dunkelmond-Jahrmarkt Karten und Reagenzien für deren Herstellung
+## Author: Cal Henderson (Bees on Hyjal-US), Telkar (RG-EU)
 ## Version: 1.5
 ## LoadOnDemand: 0
 ## Disabled: 0
