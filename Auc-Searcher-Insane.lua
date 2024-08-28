@@ -1,23 +1,23 @@
 -- Create a new instance of our lib with our parent
-local lib, parent, private = AucSearchUI.NewSearcher("Insane")
+local lib, parent, private = AucSearchUI.NewSearcher("Darkmoon")
 if not lib then return end
 local print,decode,_,_,replicate,empty,_,_,_,debugPrint,fill = AucAdvanced.GetModuleLocals()
 local get,set,default,Const = AucSearchUI.GetSearchLocals()
-lib.tabname = "Insane"
+lib.tabname = "Darkmoon"
 
 -- Set our defaults
-default("insane.deckprice", 2500000)
-default("insane.craft.rogue", 1)
-default("insane.craft.sword", 1)
-default("insane.craft.mage", 1)
-default("insane.craft.demon", 1)
-default("insane.craft.vanilla", 1)
-default("insane.craft.tbc", 1)
-default("insane.craft.wotlk", 1)
-default("insane.overhead.primal", 100000)
-default("insane.overhead.eternal", 150000)
-default("insane.mats.primal", 1)
-default("insane.mats.eternal", 1)
+default("darkmoonfairecards.deckprice", 2500000)
+default("darkmoonfairecards.craft.rogue", 1)
+default("darkmoonfairecards.craft.sword", 1)
+default("darkmoonfairecards.craft.mage", 1)
+default("darkmoonfairecards.craft.demon", 1)
+default("darkmoonfairecards.craft.vanilla", 1)
+default("darkmoonfairecards.craft.tbc", 1)
+default("darkmoonfairecards.craft.wotlk", 1)
+default("darkmoonfairecards.overhead.primal", 100000)
+default("darkmoonfairecards.overhead.eternal", 150000)
+default("darkmoonfairecards.mats.primal", 1)
+default("darkmoonfairecards.mats.eternal", 1)
 
 function private.createMap(x)
 
@@ -231,32 +231,32 @@ function lib:MakeGuiConfig(gui)
 	local id = gui:AddTab(lib.tabname, "Searchers")
 
 	-- Add the help
-	gui:AddSearcher("Insane", "Search for items for the Insane achievement", 100)
+	gui:AddSearcher("Darkmoon", "Search for items for Darkmoon Faire cards", 100)
 
-	gui:AddControl(id, "Header", 0, "Insane search criteria")
+	gui:AddControl(id, "Header", 0, "Darkmoon search criteria")
 	gui:GetLast(id).clearance = 10;
 
 	local last = gui:GetLast(id)
 
-	gui:AddControl(id, "MoneyFramePinned",  0, 0, "insane.deckprice", 1, 99999999, "Budget per Epic Deck / 350 rep");
+	gui:AddControl(id, "MoneyFramePinned",  0, 0, "darkmoonfairecards.deckprice", 1, 99999999, "Budget per Epic Deck / 350 rep");
 	gui:GetLast(id).clearance = 20;
-	gui:AddControl(id, "MoneyFramePinned",  0, 0, "insane.overhead.primal", 1, 99999999, "Budget per Primal Life");
-	gui:AddControl(id, "MoneyFramePinned",  0, 0, "insane.overhead.eternal", 1, 99999999, "Budget per Eternal Life");
+	gui:AddControl(id, "MoneyFramePinned",  0, 0, "darkmoonfairecards.overhead.primal", 1, 99999999, "Budget per Primal Life");
+	gui:AddControl(id, "MoneyFramePinned",  0, 0, "darkmoonfairecards.overhead.eternal", 1, 99999999, "Budget per Eternal Life");
 
 	gui:SetLast(id, last)
 
-	gui:AddControl(id, "Checkbox",          0.4, 1, "insane.craft.rogue"  , "Craft Rogues cards (85 Inscription)"      ); -- lvl 10
-	gui:AddControl(id, "Checkbox",          0.4, 1, "insane.craft.sword"  , "Craft Swords cards (125 Inscription)"     ); -- lvl 10
-	gui:AddControl(id, "Checkbox",          0.4, 1, "insane.craft.mage"   , "Craft Mages cards (175 Inscription)"      ); -- lvl 20
-	gui:AddControl(id, "Checkbox",          0.4, 1, "insane.craft.demon"  , "Craft Demons cards (225 Inscription)"     ); -- lvl 20
-	gui:AddControl(id, "Checkbox",          0.4, 1, "insane.craft.vanilla", "Craft Vanilla WoW cards (275 Inscription)"); -- lvl 35
+	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.rogue"  , "Craft Rogues cards (85 Inscription)"      ); -- lvl 10
+	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.sword"  , "Craft Swords cards (125 Inscription)"     ); -- lvl 10
+	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.mage"   , "Craft Mages cards (175 Inscription)"      ); -- lvl 20
+	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.demon"  , "Craft Demons cards (225 Inscription)"     ); -- lvl 20
+	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.vanilla", "Craft Vanilla WoW cards (275 Inscription)"); -- lvl 35
 
-	gui:AddControl(id, "Checkbox",          0.4, 1, "insane.craft.tbc"    , "Craft TBC cards (325 Inscription)"        ); -- lvl 50
-	gui:AddControl(id, "Checkbox",          0.4, 2, "insane.mats.primal" , "Include Primal Lifes");
+	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.tbc"    , "Craft TBC cards (325 Inscription)"        ); -- lvl 50
+	gui:AddControl(id, "Checkbox",          0.4, 2, "darkmoonfairecards.mats.primal"  , "Include Primal Lifes");
 	gui:GetLast(id).clearance = 5;
 
-	gui:AddControl(id, "Checkbox",          0.4, 1, "insane.craft.wotlk"  , "Craft WotLK cards (400 Inscription)"      ); -- lvl 65
-	gui:AddControl(id, "Checkbox",          0.4, 2, "insane.mats.eternal", "Include Eternal Lifes");
+	gui:AddControl(id, "Checkbox",          0.4, 1, "darkmoonfairecards.craft.wotlk"  , "Craft WotLK cards (400 Inscription)"      ); -- lvl 65
+	gui:AddControl(id, "Checkbox",          0.4, 2, "darkmoonfairecards.mats.eternal" , "Include Eternal Lifes");
 	gui:GetLast(id).clearance = 5;
 end
 
@@ -268,7 +268,7 @@ function lib.Search(item)
 	local buyprice = item[Const.BUYOUT];
 	local stacksize = item[Const.COUNT];
 	local priceper = buyprice / stacksize;
-	local limit = get("insane.deckprice");
+	local limit = get("darkmoonfairecards.deckprice");
 
 	if (buyprice == 0) then	return false, "nope"; end
 
@@ -295,7 +295,7 @@ function lib.Search(item)
 	-- 3: cards in deck
 	--
 	-- light parchment: 0.0.15
-	if (get("insane.craft.rogue")) then
+	if (get("darkmoonfairecards.craft.rogue")) then
 		if (rogue50Herbs[itemid]) then per_deck = 14 * 3 * 10; overhead = 14 * 3 * 15; end
 		if (rogue25Herbs[itemid]) then per_deck = 14 * 3 * 20; overhead = 14 * 3 * 15; end
 		if (rogueInks[itemid]   ) then per_deck = 14 * 3;      overhead = 14 * 3 * 15; end
@@ -307,7 +307,7 @@ function lib.Search(item)
 	-- 2: inks per card
 	--
 	-- common parchment: 0.1.25
-	if (get("insane.craft.sword")) then
+	if (get("darkmoonfairecards.craft.sword")) then
 		if (sword50Herbs[itemid]) then per_deck = 14 * 4 * 10 * 2; overhead = 14 * 4 * 125; end
 		if (sword25Herbs[itemid]) then per_deck = 14 * 4 * 20 * 2; overhead = 14 * 4 * 125; end
 		if (swordInks[itemid]   ) then per_deck = 14 * 4 * 2;      overhead = 14 * 4 * 125; end
@@ -319,7 +319,7 @@ function lib.Search(item)
 	-- 2: inks per card
 	--
 	-- common parchment: 0.1.25
-	if (get("insane.craft.mage")) then
+	if (get("darkmoonfairecards.craft.mage")) then
 		if (mage50Herbs[itemid]) then per_deck = 14 * 5 * 10 * 2; overhead = 14 * 5 * 125; end
 		if (mage25Herbs[itemid]) then per_deck = 14 * 5 * 20 * 2; overhead = 14 * 5 * 125; end
 		if (mageInks[itemid]   ) then per_deck = 14 * 5 * 2;      overhead = 14 * 5 * 125; end
@@ -332,7 +332,7 @@ function lib.Search(item)
 	-- 2: inks per card
 	--
 	-- heavy parchment: 0.12.50
-	if (get("insane.craft.demon")) then
+	if (get("darkmoonfairecards.craft.demon")) then
 		if (demon50Herbs[itemid]) then per_deck = 14 * 5 * 10 * 2; overhead = 14 * 5 * 1250; end
 		if (demon25Herbs[itemid]) then per_deck = 14 * 5 * 20 * 2; overhead = 14 * 5 * 1250; end
 		if (demonInks[itemid]   ) then per_deck = 14 * 5 * 2;      overhead = 14 * 5 * 1250; end
@@ -343,7 +343,7 @@ function lib.Search(item)
 	-- 5: inks per card
 	--
 	-- heavy parchment: 0.12.50
-	if (get("insane.craft.vanilla")) then
+	if (get("darkmoonfairecards.craft.vanilla")) then
 		if (vanilla50Herbs[itemid]) then per_deck = 8 * 10 * 5; overhead = 8 * 1250; end
 		if (vanilla25Herbs[itemid]) then per_deck = 8 * 20 * 5; overhead = 8 * 1250; end
 		if (vanillaInks[itemid]   ) then per_deck = 8 * 5;      overhead = 8 * 1250; end
@@ -354,10 +354,10 @@ function lib.Search(item)
 	-- 3: inks per card
 	--
 	-- resilient parchment: 0.50.00
-	if (get("insane.craft.tbc")) then
-		if (tbc50Herbs[itemid]) then per_deck = 8 * 10 * 3; overhead = 8 * (5000 + (3 * get("insane.overhead.primal"))); end
-		if (tbc25Herbs[itemid]) then per_deck = 8 * 20 * 3; overhead = 8 * (5000 + (3 * get("insane.overhead.primal"))); end
-		if (tbcInks[itemid]   ) then per_deck = 8 * 3;      overhead = 8 * (5000 + (3 * get("insane.overhead.primal"))); end
+	if (get("darkmoonfairecards.craft.tbc")) then
+		if (tbc50Herbs[itemid]) then per_deck = 8 * 10 * 3; overhead = 8 * (5000 + (3 * get("darkmoonfairecards.overhead.primal"))); end
+		if (tbc25Herbs[itemid]) then per_deck = 8 * 20 * 3; overhead = 8 * (5000 + (3 * get("darkmoonfairecards.overhead.primal"))); end
+		if (tbcInks[itemid]   ) then per_deck = 8 * 3;      overhead = 8 * (5000 + (3 * get("darkmoonfairecards.overhead.primal"))); end
 	end
 
 	-- WotLK crafted
@@ -366,11 +366,11 @@ function lib.Search(item)
 	-- 2: pigment per ink
 	--
 	-- resilient parchment: 0.50.00
-	if (get("insane.craft.wotlk")) then
-		if (wotlk50Herbs[itemid] ) then per_deck = 8 * 10 * 6 * 2; overhead = 8 * (5000 + (3 * get("insane.overhead.eternal"))); end
-		if (wotlk25Herbs[itemid] ) then per_deck = 8 * 20 * 6 * 2; overhead = 8 * (5000 + (3 * get("insane.overhead.eternal"))); end
-		if (wotlkPigments[itemid]) then per_deck = 8 * 6 * 2;      overhead = 8 * (5000 + (3 * get("insane.overhead.eternal"))); end
-		if (wotlkInks[itemid]    ) then per_deck = 8 * 6;          overhead = 8 * (5000 + (3 * get("insane.overhead.eternal"))); end
+	if (get("darkmoonfairecards.craft.wotlk")) then
+		if (wotlk50Herbs[itemid] ) then per_deck = 8 * 10 * 6 * 2; overhead = 8 * (5000 + (3 * get("darkmoonfairecards.overhead.eternal"))); end
+		if (wotlk25Herbs[itemid] ) then per_deck = 8 * 20 * 6 * 2; overhead = 8 * (5000 + (3 * get("darkmoonfairecards.overhead.eternal"))); end
+		if (wotlkPigments[itemid]) then per_deck = 8 * 6 * 2;      overhead = 8 * (5000 + (3 * get("darkmoonfairecards.overhead.eternal"))); end
+		if (wotlkInks[itemid]    ) then per_deck = 8 * 6;          overhead = 8 * (5000 + (3 * get("darkmoonfairecards.overhead.eternal"))); end
 	end
 
 
@@ -387,13 +387,13 @@ function lib.Search(item)
 	--
 
 	local life_percent = 0;
-	if (get("insane.mats.primal")) then
-		local p1 = get("insane.overhead.primal");
+	if (get("darkmoonfairecards.mats.primal")) then
+		local p1 = get("darkmoonfairecards.overhead.primal");
 		if ((itemid == 21886) and (priceper <= p1)) then life_percent = priceper / p1; end
 		if ((itemid == 22575) and (priceper*10 <= p1)) then life_percent = (priceper * 10) / p1; end
 	end
-	if (get("insane.mats.eternal")) then
-		local p2 = get("insane.overhead.eternal");
+	if (get("darkmoonfairecards.mats.eternal")) then
+		local p2 = get("darkmoonfairecards.overhead.eternal");
 		if ((itemid == 35625) and (priceper <= p2)) then life_percent = priceper / p2; end
 		if ((itemid == 37704) and (priceper*10 <= p2)) then life_percent = (priceper * 10) / p2; end
 	end

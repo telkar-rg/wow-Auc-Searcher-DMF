@@ -1,11 +1,13 @@
 ## Interface: 30300
-## Title: Auc:Searcher:Insane
-## Notes: Allows searching of Auctioneer data for Insane items
+## Title: Auc:Searcher: Darkmoon Faire
+## Notes: Allows searching of Auctioneer data for Darkmoon Faire cards and ingredient items
+## Title-deDE: Auc:Searcher: Darkmoon Faire
+## Notes-deDE: Ermöglicht das Durchsuchen von Auctioneer-Daten nach Dunkelmond-Jahrmarkt Karten and deren Zutaten
 ## Author: Cal Henderson (Bees on Hyjal-US)
 ## Version: 1.4
 ## LoadOnDemand: 0
 ## Disabled: 0
 ## Dependencies: Auc-Advanced
 
-Auc-Searcher-Insane.xml
-Auc-Searcher-Insane.lua
+Auc-Searcher-DMF.xml
+Auc-Searcher-DMF.lua
