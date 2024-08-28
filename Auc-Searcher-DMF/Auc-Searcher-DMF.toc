@@ -4,10 +4,12 @@
 ## Title-deDE: Auc:Searcher: Darkmoon Faire
 ## Notes-deDE: Ermöglicht das Durchsuchen von Auctioneer-Daten nach Dunkelmond-Jahrmarkt Karten and deren Zutaten
 ## Author: Cal Henderson (Bees on Hyjal-US)
-## Version: 1.4
+## Version: 1.5
 ## LoadOnDemand: 0
 ## Disabled: 0
 ## Dependencies: Auc-Advanced
 
 Auc-Searcher-DMF.xml
+
+Auc-Searcher-DMF-Locale.lua
 Auc-Searcher-DMF.lua

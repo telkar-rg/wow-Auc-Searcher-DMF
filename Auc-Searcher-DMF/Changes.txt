@@ -23,3 +23,6 @@
  * optionally include primal/eternal lifes in results
  * better options pane layout
  * ?
+
+1.5
+ * Renamed to 'Auc-Searcher-DMF'
