@@ -1,3 +1,5 @@
+local ADDON_NAME, ADDON_TABLE = ...
+
 -- Create a new instance of our lib with our parent
 local lib, parent, private = AucSearchUI.NewSearcher("Darkmoon")
 if not lib then return end
@@ -5,8 +7,14 @@ local print,decode,_,_,replicate,empty,_,_,_,debugPrint,fill = AucAdvanced.GetMo
 local get,set,default,Const = AucSearchUI.GetSearchLocals()
 lib.tabname = "Darkmoon"
 
+local L = ADDON_TABLE.Locale
+if not L then
+	print(ADDON_NAME,"ERROR with Locale")
+	return
+end
+
 -- Set our defaults
-default("darkmoonfairecards.deckprice", 2500000)
+default("darkmoonfairecards.deckprice", 5000*10000)
 default("darkmoonfairecards.craft.rogue", 1)
 default("darkmoonfairecards.craft.sword", 1)
 default("darkmoonfairecards.craft.mage", 1)
@@ -14,8 +22,8 @@ default("darkmoonfairecards.craft.demon", 1)
 default("darkmoonfairecards.craft.vanilla", 1)
 default("darkmoonfairecards.craft.tbc", 1)
 default("darkmoonfairecards.craft.wotlk", 1)
-default("darkmoonfairecards.overhead.primal", 100000)
-default("darkmoonfairecards.overhead.eternal", 150000)
+default("darkmoonfairecards.overhead.primal", 20*10000)
+default("darkmoonfairecards.overhead.eternal", 30*10000)
 default("darkmoonfairecards.mats.primal", 1)
 default("darkmoonfairecards.mats.eternal", 1)
 
@@ -231,9 +239,9 @@ function lib:MakeGuiConfig(gui)
 	local id = gui:AddTab(lib.tabname, "Searchers")
 
 	-- Add the help
-	gui:AddSearcher("Darkmoon", "Search for items for Darkmoon Faire cards", 100)
+	gui:AddSearcher( L["Searcher_Title"], L["Searcher_Desc"], 100)
 
-	gui:AddControl(id, "Header", 0, "Darkmoon search criteria")
+	gui:AddControl(id, "Header", 0, L["Header_Desc"])
 	gui:GetLast(id).clearance = 10;
 
 	local last = gui:GetLast(id)
