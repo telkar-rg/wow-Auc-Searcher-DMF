@@ -529,7 +529,7 @@ function lib.Search(item)
 
 	if (per_deck > 0) then
 		local costAllowed = (limit - overhead) / per_deck
-		if priceper <= costAllowed then
+		if priceper <= costAllowed*2 then
 			local factor = priceper / costAllowed;
 			return string.format("%3d%%", 100 * factor);
 		end
@@ -543,13 +543,13 @@ function lib.Search(item)
 	local life_percent = 0;
 	if (get("darkmoonfairecards.mats.primal")) then
 		local p1 = get("darkmoonfairecards.overhead.primal");
-		if ((itemid == 21886) and (priceper <= p1)) then life_percent = priceper / p1; end
-		if ((itemid == 22575) and (priceper*10 <= p1)) then life_percent = (priceper * 10) / p1; end
+		if ((itemid == 21886) and (priceper <= p1*2)) then life_percent = priceper / p1; end
+		if ((itemid == 22575) and (priceper*10 <= p1*2)) then life_percent = (priceper * 10) / p1; end
 	end
 	if (get("darkmoonfairecards.mats.eternal")) then
 		local p2 = get("darkmoonfairecards.overhead.eternal");
-		if ((itemid == 35625) and (priceper <= p2)) then life_percent = priceper / p2; end
-		if ((itemid == 37704) and (priceper*10 <= p2)) then life_percent = (priceper * 10) / p2; end
+		if ((itemid == 35625) and (priceper <= p2*2)) then life_percent = priceper / p2; end
+		if ((itemid == 37704) and (priceper*10 <= p2*2)) then life_percent = (priceper * 10) / p2; end
 	end
 	if (life_percent > 0) then
 		return string.format("%3d%%", 100 * life_percent);
