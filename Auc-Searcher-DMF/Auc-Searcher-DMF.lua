@@ -39,6 +39,12 @@ default("darkmoonfairecards.overhead.eternal", 30*10000)
 default("darkmoonfairecards.mats.primal", 1)
 default("darkmoonfairecards.mats.eternal", 1)
 
+local COL_blue = 	"\124cFF".."2399ff".."%s\124r"
+local COL_green = 	"\124cFF".."2aff1a".."%s\124r"
+local COL_yellow = 	"\124cFF".."fdff00".."%s\124r"
+local COL_orange = 	"\124cFF".."fe991a".."%s\124r"
+local COL_red = 	"\124cFF".."ff0000".."%s\124r"
+
 
 function private.createMap(x)
 
@@ -531,7 +537,18 @@ function lib.Search(item)
 		local costAllowed = (limit - overhead) / per_deck
 		if priceper <= costAllowed*2 then
 			local factor = priceper / costAllowed;
-			return string.format("%3d%%", 100 * factor);
+			-- return string.format("%3d%%", 100 * factor)
+			if factor > 1.25 then
+				return format( COL_red, format("%3d%%", factor*100) )
+			elseif factor > 1.009 then
+				return format( COL_orange, format("%3d%%", factor*100) )
+			elseif factor > 0.66 then
+				return format( COL_yellow, format("%3d%%", factor*100) )
+			elseif factor > 0.33 then
+				return format( COL_green, format("%3d%%", factor*100) )
+			else
+				return format( COL_blue, format("%3d%%", factor*100) )
+			end
 		end
 	end
 
@@ -552,7 +569,18 @@ function lib.Search(item)
 		if ((itemid == 37704) and (priceper*10 <= p2*2)) then life_percent = (priceper * 10) / p2; end
 	end
 	if (life_percent > 0) then
-		return string.format("%3d%%", 100 * life_percent);
+		-- return string.format("%3d%%", 100 * life_percent);
+		if life_percent > 1.25 then
+			return format( COL_red, format("%3d%%", life_percent*100) )
+		elseif life_percent > 1.009 then
+			return format( COL_orange, format("%3d%%", life_percent*100) )
+		elseif life_percent > 0.66 then
+			return format( COL_yellow, format("%3d%%", life_percent*100) )
+		elseif life_percent > 0.33 then
+			return format( COL_green, format("%3d%%", life_percent*100) )
+		else
+			return format( COL_blue, format("%3d%%", life_percent*100) )
+		end
 	end
 
 
