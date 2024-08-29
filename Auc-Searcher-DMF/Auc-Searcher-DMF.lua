@@ -15,6 +15,7 @@ end
 
 -- Set our defaults
 default("darkmoonfairecards.deckprice", 2000*10000)
+default("darkmoonfairecards.budgetMaxPer", 1.25)
 
 default("darkmoonfairecards.cards.rogue", 1)
 default("darkmoonfairecards.cards.sword", 1)
@@ -397,6 +398,12 @@ function lib:MakeGuiConfig(gui)
 	gui:AddControl(id, "MoneyFramePinned",  colPos, 0, "darkmoonfairecards.deckprice", 1, 99999999, L["Money.deckprice"]);
 	gui:AddControl(id, "MoneyFramePinned",  colPos, 0, "darkmoonfairecards.overhead.eternal", 1, 99999999, L["Money.mats.eternal"]);
 	gui:AddControl(id, "MoneyFramePinned",  colPos, 0, "darkmoonfairecards.overhead.primal", 1, 99999999, L["Money.mats.primal"]);
+	gui:GetLast(id).clearance = 1;
+	
+											-- level, setting, min, max, step, text, fmtfunc = ...
+	gui:AddControl(id, "NumeriTiny",  colPos, 0, "darkmoonfairecards.budgetMaxPer", 1, 2, 0.01, L["NumeriTiny.budgetMaxPer"]);
+	
+	
 	gui:GetLast(id).clearance = 5;
 									-- level, width, height, text
 	gui:AddControl(id, "Note",  colPos, 0, 280, 150, L["Note.deckprice"])
@@ -535,12 +542,12 @@ function lib.Search(item)
 
 	if (per_deck > 0) then
 		local costAllowed = (limit - overhead) / per_deck
-		if priceper <= costAllowed*2 then
+		if priceper <= costAllowed * get("darkmoonfairecards.budgetMaxPer") then
 			local factor = priceper / costAllowed;
 			-- return string.format("%3d%%", 100 * factor)
 			if factor > 1.25 then
 				return format( COL_red, format("%3d%%", factor*100) )
-			elseif factor > 1.009 then
+			elseif factor > 1.005 then
 				return format( COL_orange, format("%3d%%", factor*100) )
 			elseif factor > 0.66 then
 				return format( COL_yellow, format("%3d%%", factor*100) )
@@ -560,23 +567,25 @@ function lib.Search(item)
 	local life_percent = 0;
 	if (get("darkmoonfairecards.mats.primal")) then
 		local p1 = get("darkmoonfairecards.overhead.primal");
-		if ((itemid == 21886) and (priceper <= p1*2)) then life_percent = priceper / p1; end
-		if ((itemid == 22575) and (priceper*10 <= p1*2)) then life_percent = (priceper * 10) / p1; end
+		local p1_max = p1 * get("darkmoonfairecards.budgetMaxPer")
+		if ((itemid == 21886) and (priceper <= p1_max)) then life_percent = priceper / p1; end
+		if ((itemid == 22575) and (priceper*10 <= p1_max)) then life_percent = (priceper * 10) / p1; end
 	end
 	if (get("darkmoonfairecards.mats.eternal")) then
 		local p2 = get("darkmoonfairecards.overhead.eternal");
-		if ((itemid == 35625) and (priceper <= p2*2)) then life_percent = priceper / p2; end
-		if ((itemid == 37704) and (priceper*10 <= p2*2)) then life_percent = (priceper * 10) / p2; end
+		local p2_max = p2 * get("darkmoonfairecards.budgetMaxPer")
+		if ((itemid == 35625) and (priceper <= p2_max)) then life_percent = priceper / p2; end
+		if ((itemid == 37704) and (priceper*10 <= p2_max)) then life_percent = (priceper * 10) / p2; end
 	end
 	if (life_percent > 0) then
 		-- return string.format("%3d%%", 100 * life_percent);
 		if life_percent > 1.25 then
 			return format( COL_red, format("%3d%%", life_percent*100) )
-		elseif life_percent > 1.009 then
+		elseif life_percent > 1.005 then
 			return format( COL_orange, format("%3d%%", life_percent*100) )
-		elseif life_percent > 0.66 then
+		elseif life_percent > 0.665 then
 			return format( COL_yellow, format("%3d%%", life_percent*100) )
-		elseif life_percent > 0.33 then
+		elseif life_percent > 0.335 then
 			return format( COL_green, format("%3d%%", life_percent*100) )
 		else
 			return format( COL_blue, format("%3d%%", life_percent*100) )

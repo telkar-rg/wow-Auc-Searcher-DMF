@@ -16,6 +16,7 @@ L["Header_Desc"] = 		"Scan: Quest, Trade Goods (Elemental, Herb, Parts, Other)"
 L["Money.deckprice"] = 		format("Budget per \124cffaa47ee%s\124r", "Epic Deck") .. sup_1 .. " (350 rep)"
 L["Money.mats.eternal"] = 	format("Budget per \124cff1eff00%s\124r", "Eternal Life") .. sup_2
 L["Money.mats.primal"] = 	format("Budget per \124cff1eff00%s\124r", "Primal Life") .. sup_2
+L["NumeriTiny.budgetMaxPer"] = 	"Show items up to \n%.2f x Budget"
 
 L["Note.deckprice"] = 	format("1) Items in the Auction House will be weighted according to their share in the complete \124cffaa47ee%s\124r (350 rep) and are only shown, if they fit inside the Budget.", "Epic Deck") .. format("\n  In case of the \124cffc43b52%s\124r, this will be scaled to the equivalent of 350 rep.", "lesser Decks") .. format("\n\n2) The Budget of \124cff1eff00%s\124r will be assumed as the cost when weighing Reagents for TBC/WotLK cards.", "Primal Life/Eternal Life")
 
@@ -50,12 +51,13 @@ if GAME_LOCALE == "deDE" then
 	L["Header_Title"] = 	format("Dunkelmond-Karten & Reagenzien (%s) - Suchkriterium", Version)
 	L["Header_Desc"] = 		"Scanne: Quest, Handwerkswaren (Elementar, Kräuter, Teile, Sonstige)"
 
-	L["Note.deckprice"] = 	format("1) Items im Auktionshaus werden entsprechend ihrem Anteil am fertigen \124cffaa47ee%s\124r (350 Ruf) gewichtet und nur dann aufgeführt, wenn sie in das Budget passen.", "Epic Kartenset") .. format("\n  Im Falle der \124cffc43b52%s\124r wird dies auf 350 Ruf hochgerechnet.", "kleinen Kartensets")
+	L["Note.deckprice"] = 	format("1) Items im Auktionshaus werden entsprechend ihrem Anteil am fertigen \124cffaa47ee%s\124r (350 Ruf) gewichtet und nur dann aufgeführt, wenn sie in das Budget passen.", "Epic Kartenset") .. format("\n  Im Falle der \124cffc43b52%s\124r wird dies auf 350 Ruf hochgerechnet.", "geringen Kartensets")
 	.. format("\n\n2) Das Budget von \124cff1eff00%s\124r wird als Preis angenommen, wenn der Anteil der Reagenzien für TBC/WotLK Karten gewichtet wird.", "Urleben/Äonenleben")
 
 	L["Money.deckprice"] = 		format("Budget pro \124cffaa47ee%s\124r", "Epic Kartenset") .. sup_1 .. " (350 Ruf)"
 	L["Money.mats.eternal"] = 	format("Budget pro \124cff1eff00%s\124r", "Äonenleben") .. sup_2
 	L["Money.mats.primal"] = 	format("Budget pro \124cff1eff00%s\124r", "Urleben") .. sup_2
+	L["NumeriTiny.budgetMaxPer"] = 	"Zeige Items bis zu \n%.2f x Budget"
 	
 	L["Checkbox.cards.wotlk"] = format("Karten/Sets: \124cff3FC7EB%s\124r", "WotLK")
 	L["Checkbox.craft.wotlk"] = format("Reagenzien: \124cff3FC7EB%s\124r-Karten (400 IK)", "WotLK")
