@@ -4,9 +4,9 @@ Original by [iamcal](https://github.com/iamcal/wow-Auc-Searcher-Insane).
 
 # wow-Auc-Searcher: Darkmoon Faire Cards
 
-![Image of the AH interface](https://raw.githubusercontent.com/telkar-rg/wow-Auc-Searcher-DMF/master/_IMG/1.png)
+<img src="https://raw.githubusercontent.com/telkar-rg/wow-Auc-Searcher-DMF/master/_IMG/1.png" align="center" width="75%"> 
 
-![Image of the AH interface](https://raw.githubusercontent.com/telkar-rg/wow-Auc-Searcher-DMF/master/_IMG/2.png)
+<img src="https://raw.githubusercontent.com/telkar-rg/wow-Auc-Searcher-DMF/master/_IMG/2.png" align="center" width="75%"> 
 
 ## Changes
 ### [Auc-Searcher-DMF 1.5](https://github.com/telkar-rg/wow-Auc-Searcher-DMF/releases/tag/1.5)
