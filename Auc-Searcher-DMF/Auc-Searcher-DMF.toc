@@ -8,7 +8,4 @@
 ## Disabled: 0
 ## Dependencies: Auc-Advanced
 
-Auc-Searcher-DMF.xml
-
-Auc-Searcher-DMF-Locale.lua
-Auc-Searcher-DMF.lua
+Embed.xml
