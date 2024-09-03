@@ -599,4 +599,4 @@ function lib.Search(item)
 	return false, "nope";
 end
 
-AucAdvanced.RegisterRevision("$URL: https://github.com/telkar-rg/wow-Auc-Searcher-DMF/blob/master/Auc-Searcher-DMF/Auc-Searcher-DMF.lua $", "$Rev: 15 $")
+AucAdvanced.RegisterRevision("$URL: https://github.com/telkar-rg/wow-Auc-Searcher-DMF/blob/1.5/Auc-Searcher-DMF/Auc-Searcher-DMF.lua $", "$Rev: 15 $")
