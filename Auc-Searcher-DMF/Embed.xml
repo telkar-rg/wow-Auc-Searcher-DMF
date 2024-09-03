@@ -2,6 +2,6 @@
 	<Script file="Auc-Searcher-DMF-Locale.lua"/>
 	<Script file="Auc-Searcher-DMF.lua"/>
 	<Script>
-		AucAdvanced.RegisterRevision("$URL$", "$Rev$");
+		AucAdvanced.RegisterRevision("$URL: https://github.com/telkar-rg/wow-Auc-Searcher-DMF/blob/master/Auc-Searcher-DMF/Embed.xml $", "$Rev: 15 $")
 	</Script>
 </Ui>

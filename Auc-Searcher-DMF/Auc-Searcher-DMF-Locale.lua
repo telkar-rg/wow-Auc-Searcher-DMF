@@ -82,3 +82,5 @@ if GAME_LOCALE == "deDE" then
 	L["Checkbox.cards.rogue"] = format("Karten/Sets: \124cffc47683%s\124r", "Schurken")
 	L["Checkbox.craft.rogue"] = format("Reagenzien: \124cffc47683%s\124r-Karten (85 IK)", "Schurken")
 end
+
+AucAdvanced.RegisterRevision("$URL: https://github.com/telkar-rg/wow-Auc-Searcher-DMF/blob/master/Auc-Searcher-DMF/Auc-Searcher-DMF-Locale.lua $", "$Rev: 15 $")
